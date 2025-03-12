@@ -4,23 +4,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {
-                    sh 'g++ -o YOUR_SRN-1 hello.cpp'
-                }
+                echo 'Building...'
+                sh 'g++ -o output hello.cpp' // Compile the C++ file
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    sh './YOUR_SRN-1'
-                }
+                echo 'Testing...'
+                sh './output' // Run the compiled output file
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
+                echo 'Deploying...'
             }
         }
     }
